@@ -8,10 +8,11 @@
 # Data Criação: 25/12/2019
 #
 # Descrição: Script de exemplo que cria arquivos
-#
+#Com caracteres ate completar o tamanho(bytes)
+# especifico.
 # Exemplo de uso: ./Criararquivo.sh
 #
-
+#
 #
 ################################################
 
@@ -23,7 +24,7 @@ read -p "Informe o tamanho final do arquivo(em bytes)" SIZE
 
 cat /dev/null > $FILE
 PORC_EXIBIDA=0
-until [ $SIZE -le $(stat --printf=%s "$FILE") ]
+until [  $SIZE -le $(stat --printf=%s "$FILE")  ]
 do
   echo -n $WORD >> $FILE
   SIZEATUAL=$(stat --printf=%s "$FILE")
@@ -34,4 +35,4 @@ do
     echo "Concluido: $PORC_ATUAL% - Tamanho do Arquivo: $SIZEATUAL"
     PORC_EXIBIDA=$PORC_ATUAL
   fi
-
+done
